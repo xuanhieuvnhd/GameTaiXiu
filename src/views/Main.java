@@ -1,6 +1,6 @@
-package main;
+package views;
 
-import taikhoan.TaiKhoan;
+import controller.Account;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -11,9 +11,9 @@ public class Main implements Serializable {
 
     public static void MenuMain() {
         Scanner scanner = new Scanner(System.in);
-        TaiKhoan TK = new TaiKhoan();
-        TK.docTaiLieu();
-        int chon = -1;
+        Account account = new Account();
+        account.readData();
+        int choose = -1;
         System.out.println("*****************************");
         System.out.println("------------->Trang Chu<-------------");
         System.out.println("**          1. Dang nhap              **");
@@ -25,14 +25,14 @@ public class Main implements Serializable {
 
             System.out.print("  --> Vui long chon chuc nang:");
             try {
-                chon = Integer.parseInt(scanner.nextLine());
+                choose = Integer.parseInt(scanner.nextLine());
 
             } catch (Exception e) {
                 System.err.println("Chuc nang khong ton tai ! vui long chon lai: ");
             }
-            switch (chon) {
-                case 1 -> TK.dangNhap(scanner);
-                case 2 -> TK.themTaiKhoan(scanner);
+            switch (choose) {
+                case 1 -> account.login(scanner);
+                case 2 -> account.addAucount(scanner);
                 case 0 -> System.exit(0);
             }
         }
